@@ -55,7 +55,7 @@ export default async function signin(req, res) {
     await close();
 
     //enviar token ao usuário.
-    return res.status(201).send(token);
+    return res.status(201).send(session);
   } catch (error) {
     await close();
     return res.sendStatus(500);
