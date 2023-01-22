@@ -1,7 +1,8 @@
+import { ObjectId } from "mongodb";
 import { connect, close } from "../services/database/mongoDB.js";
 
 export default async function auth(req, res, next) {
-  const { authorization, user_email } = req.headers;
+  const { authorization, user_id } = req.headers;
   const token = authorization?.replace("Bearer ", "");
 
   if (!token) {
@@ -13,12 +14,12 @@ export default async function auth(req, res, next) {
     const db = await connect();
     const findedUser = await db
       .collection("users")
-      .findOne({ email: user_email });
+      .findOne({ _id: ObjectId(user_id) });
     const findedSession = await db
       .collection("sessions")
       .findOne({ token: token });
-
-    console.log(findedSession?.userId);
+  
+    console.log(findedSession?.userId.toString());
     console.log(findedUser?._id);
     console.log(typeof findedSession?.userId);
     console.log(findedSession.userId !== findedUser._id);
