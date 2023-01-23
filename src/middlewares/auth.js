@@ -5,7 +5,7 @@ export default async function auth(req, res, next) {
   const { authorization, user_id } = req.headers;
   const token = authorization?.replace("Bearer ", "");
 
-  if (!token) {
+  if (!token || !authorization || !user_id) {
     return res.status(401).send("Credenciais inválidas");
   }
 
