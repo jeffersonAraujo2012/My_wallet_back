@@ -1,4 +1,4 @@
-import { connect, close } from "../services/database/mongoDB.js";
+import { connect, close } from "../../services/database/mongoDB.js";
 
 export default async function getRegisters(req, res) {
   const userId = res.locals.userId;

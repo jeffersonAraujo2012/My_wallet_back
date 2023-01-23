@@ -22,7 +22,7 @@ export default async function auth(req, res, next) {
     console.log(findedSession?.userId.toString());
     console.log(findedUser?._id);
     console.log(typeof findedSession?.userId);
-    console.log(findedSession.userId !== findedUser._id);
+    console.log(findedSession?.userId !== findedUser?._id);
     if (
       !findedUser ||
       !findedSession ||

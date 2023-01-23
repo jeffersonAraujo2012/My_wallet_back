@@ -1,5 +1,5 @@
-import registerScheme from "../models/registerScheme.js";
-import { connect, close } from "../services/database/mongoDB.js";
+import registerScheme from "../../models/registerScheme.js";
+import { connect, close } from "../../services/database/mongoDB.js";
 
 export default async function addRegister(req, res) {
   const register = req.body;
